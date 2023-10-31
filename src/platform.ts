@@ -81,8 +81,11 @@ export class TechEmodulHomebridgePlatform implements DynamicPlatformPlugin {
 
   handleRefreshData(url) {
     this.axiosInstance.get(url)
-      .then((response: AxiosResponse<any>) => {
+      .then((response: AxiosResponse) => {
         this.responses[url] = response;
+      })
+      .catch((error) => {
+        this.log.error('Refresh data error', error);
       });
   }
 
@@ -98,7 +101,7 @@ export class TechEmodulHomebridgePlatform implements DynamicPlatformPlugin {
         this.log.debug('Module uuid', module.udid);
 
         this.axiosInstance.get(`users/${this.userId}/modules/${module.udid}`)
-          .then((response: AxiosResponse<any>) => {
+          .then((response: AxiosResponse) => {
             const directoryUrl = `users/${this.userId}/modules/${module.udid}`;
 
             this.handleRefreshData(directoryUrl);
@@ -134,6 +137,8 @@ export class TechEmodulHomebridgePlatform implements DynamicPlatformPlugin {
             }
           });
       }
+    }).catch((error) => {
+      this.log.error('Discover devices error', error);
     });
   }
 }

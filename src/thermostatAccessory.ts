@@ -1,12 +1,15 @@
 import {PlatformAccessory} from 'homebridge';
 import {TechEmodulHomebridgePlatform} from './platform';
-import {AxiosResponse} from 'axios';
 
 export class TechModuleThermostatAccessory {
-  private service: any;
-  private name: any;
+  private service;
+  private name;
 
-  constructor(private readonly accessory: PlatformAccessory, private readonly platform: TechEmodulHomebridgePlatform, private readonly directoryUrl: string) {
+  constructor(
+        private readonly accessory: PlatformAccessory,
+        private readonly platform: TechEmodulHomebridgePlatform,
+        private readonly directoryUrl: string) {
+
         // set accessory information
         this.accessory.getService(this.platform.Service.AccessoryInformation)!
           .setCharacteristic(this.platform.Characteristic.Manufacturer, 'Tech-Sterowniki')
@@ -84,7 +87,7 @@ export class TechModuleThermostatAccessory {
      * Handle requests to set the "Target Heating Cooling State" characteristic
      */
   handleTargetHeatingCoolingStateSet(value) {
-    // this.platform.log.debug('Triggered SET TargetHeatingCoolingState:', value);
+    this.platform.log.debug('Triggered SET TargetHeatingCoolingState:', value);
   }
 
   /**
@@ -131,7 +134,7 @@ export class TechModuleThermostatAccessory {
         setTemperature: value * 10,
         scheduleIndex: 0,
       },
-    }).then((response: AxiosResponse<any>) => {
+    }).then(() => {
       this.platform.log.info(`Set temperature for ${this.accessory.context.device.description.name} success`, value);
       setTimeout(() => {
         this.platform.handleRefreshData(this.directoryUrl);
@@ -157,7 +160,7 @@ export class TechModuleThermostatAccessory {
      * Handle requests to set the "Temperature Display Units" characteristic
      */
   handleTemperatureDisplayUnitsSet(value) {
-    // this.platform.log.debug('Triggered SET TemperatureDisplayUnits:', value);
+    this.platform.log.debug('Triggered SET TemperatureDisplayUnits:', value);
   }
 
 }
