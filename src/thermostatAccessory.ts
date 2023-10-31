@@ -29,6 +29,14 @@ export class TechModuleThermostatAccessory {
           .onGet(this.handleCurrentHeatingCoolingStateGet.bind(this));
 
         this.service.getCharacteristic(this.platform.Characteristic.TargetHeatingCoolingState)
+        // .setProps({
+        //   validValues: [
+        //     // this.platform.Characteristic.TargetHeatingCoolingState.AUTO,
+        //     this.platform.Characteristic.TargetHeatingCoolingState.HEAT,
+        //     this.platform.Characteristic.TargetHeatingCoolingState.OFF,
+        //     // this.platform.Characteristic.TargetHeatingCoolingState.COOL,
+        //   ],
+        // })
           .onGet(this.handleTargetHeatingCoolingStateGet.bind(this))
           .onSet(this.handleTargetHeatingCoolingStateSet.bind(this));
 
