@@ -2,14 +2,14 @@
   "displayName": "HomeBridge TechSterowniki emodul",
   "name": "homebridge-tech-emodul",
   "version": "2.0.0",
-  "description": "A short description about what your plugin does.",
+  "description": "The Homebridge Tech-Sterowniki Platform Plugin integrates Tech-Sterowniki's EMODUL.EU devices with Apple's HomeKit, enabling users to control and monitor their devices via the Home app and Siri voice commands.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME.git"
+    "url": "https://github.com/kamil-bednarek/homebridge-tech-emodul.git"
   },
   "bugs": {
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME/issues"
+    "url": "https://github.com/kamil-bednarek/homebridge-tech-emodul/issues"
   },
   "engines": {
     "node": "^18.17.0",
