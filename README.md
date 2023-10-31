@@ -79,7 +79,7 @@ the GitHub repository.
 
 ### License
 
-This Homebridge plugin is released under the MIT License.
+This Homebridge plugin is released under the Apache-2.0 license.
 
 ### Contact
 
