@@ -6,10 +6,26 @@
     "type": "object",
     "properties": {
       "name": {
-        "title": "Name",
+        "title": "Home name",
         "type": "string",
         "required": true,
-        "default": "Example Dynamic Platform"
+        "default": "My home"
+      },
+      "apiUrl": {
+        "title": "eModul.eu API URL",
+        "type": "string",
+        "required": false,
+        "default": "https://emodul.eu/api/v1/"
+      },
+      "login": {
+        "title": "eModul.eu Login",
+        "type": "string",
+        "required": true
+      },
+      "password": {
+          "title": "eModul.eu Password",
+          "type": "string",
+          "required": true
       }
     }
   }
