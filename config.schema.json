@@ -1,5 +1,5 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginAlias": "TechEmodulHomebridgePlugin",
   "pluginType": "platform",
   "singular": true,
   "schema": {
@@ -23,9 +23,9 @@
         "required": true
       },
       "password": {
-          "title": "eModul.eu Password",
-          "type": "string",
-          "required": true
+        "title": "eModul.eu Password",
+        "type": "string",
+        "required": true
       }
     }
   }
