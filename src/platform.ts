@@ -12,6 +12,7 @@ import {PLATFORM_NAME, PLUGIN_NAME} from './settings';
 import {AuthenticationResponse} from './dto/authentication.response';
 import {ModulesResponse} from './dto/modules.response';
 import {TechModuleThermostatAccessory} from './thermostatAccessory';
+import {TechModuleHumidityAccessory} from "./humidityAccessory";
 
 /**
  * HomebridgePlatform
@@ -117,12 +118,14 @@ export class TechEmodulHomebridgePlatform implements DynamicPlatformPlugin {
               this.log.debug('Element discovered', element.description.name);
               this.log.debug('Element current temperature', element.zone.currentTemperature / 100);
               this.log.debug('Element set temperature', element.zone.setTemperature / 100);
+              this.log.debug('Element humidity', element.zone.humidity);
               const existing = this.accessories.find(accessory => accessory.UUID === uuid);
 
               if (existing) {
                 this.log.info('Restoring accessory:', element.description.name);
                 this.api.updatePlatformAccessories([existing]);
                 new TechModuleThermostatAccessory(existing, this, directoryUrl);
+                new TechModuleHumidityAccessory(existing, this, directoryUrl);
               } else {
                 this.log.info('Adding new accessory:', element.description.name);
                 this.log.info('Adding new accessory ID:', uuid);
@@ -130,6 +133,7 @@ export class TechEmodulHomebridgePlatform implements DynamicPlatformPlugin {
                 const accessory = new this.api.platformAccessory(element.description.name, uuid);
                 accessory.context.device = element;
                 new TechModuleThermostatAccessory(accessory, this, directoryUrl);
+                new TechModuleHumidityAccessory(accessory, this, directoryUrl);
 
                 // link the accessory to your platform
                 this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [accessory]);
